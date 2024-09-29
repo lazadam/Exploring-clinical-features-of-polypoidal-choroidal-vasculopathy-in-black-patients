@@ -1,0 +1,62 @@
+library(ggplot2)
+library(dplyr)
+
+# Données regroupées par Asiatiques, Afro-descendant et Blancs
+data <- data.frame(
+  Groupe_ethnique = c(rep('Asiatiques', 9), rep('Afro-descendants', 5), rep('Blancs', 8)),
+  Nombre_patients = c(19,
+37,
+204,
+32,
+100,
+158,
+80,
+79,
+100,
+14,
+12,
+14,
+110,
+18,
+36,
+52,
+49,
+19,
+66,
+73,
+27,
+21),
+  Pourcentage = c(32,
+14,
+5,
+9,
+7.2,
+6,
+15,
+5,
+9.4,
+35.7,
+13.9,
+52,
+52.4,
+38.9,
+36,
+8.8,
+16.6,
+37,
+19,
+13.9,
+35,
+14.3)
+)
+
+# Création du bubble plot
+p <- ggplot(data, aes(x = Groupe_ethnique, y = Pourcentage, size = Nombre_patients, color = Groupe_ethnique)) +
+  geom_point(alpha = 0.6) +
+  scale_size(range = c(3, 20)) + # Taille des bulles
+  labs(title = "Bubble Plot du pourcentage de polypes péripapillaires par groupe ethnique",
+       x = "Groupe ethnique", y = "Pourcentage de polypes à localisation péripapillaire") +
+  theme_minimal()
+
+# Affichage du graphique
+p
