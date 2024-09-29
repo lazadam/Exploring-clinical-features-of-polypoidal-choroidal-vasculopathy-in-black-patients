@@ -1,0 +1,20 @@
+library(ggplot2)
+library(dplyr)
+
+# Données regroupées par Asians, Blacks et Whites
+data <- data.frame(
+  Ethnic_group = c(rep('Asians', n), rep('Blacks', n), rep('Whites', n)),
+  Number_of_patients = c(n1, n2, ...),
+  Pourcentage = c(n1, n2, ...)
+)
+
+# Création du bubble plot
+p <- ggplot(data, aes(x = Ethnic_group, y = Pourcentage, size = Number_of_patients, color = Ethnic_group)) +
+  geom_point(alpha = 0.6) +
+  scale_size(range = c(3, 20)) + # Taille des bulles
+  labs(title = "Bubble Plot of ... by ...",
+       x = "Ethnic_group", y = "Pourcentage of ...") +
+  theme_minimal()
+
+# Affichage du graphique
+p
